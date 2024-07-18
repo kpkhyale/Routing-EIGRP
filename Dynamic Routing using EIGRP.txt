@@ -1,0 +1,70 @@
+Dynamic Routing using EIGRP
+
+Mumbai
+
+en
+conf t
+
+
+int fa0/0
+ip add 192.168.1.1 255.255.255.0
+no shut
+exit
+
+int s0/0
+ip add 10.0.0.1 255.0.0.0
+clock rate 64000
+band 64
+exit
+
+router eigrp 100
+network 192.168.1.0
+network 10.0.0.0
+
+
+Pune
+
+en
+conf t
+
+int fa0/0
+ip add 192.168.2.1 255.255.255.0 
+no shut
+exit
+
+int s0/0
+ip add 10.0.0.2 255.0.0.0
+no shut 
+exit
+
+int s0/1
+ip add 11.0.0.1 255.0.0.0
+clock rate 64000
+band 64
+
+router eigrp 100
+network 192.168.2.0 
+network 10.0.0.0
+network 11.0.0.0
+
+
+
+Delhi
+
+en
+conf t
+
+int fa0/0
+ip add 192.168.3.1 255.255.255.0 
+no shut 
+exit
+
+int s0/1
+ip add 11.0.0.2 255.0.0.0
+no shut 
+exit
+
+router eigrp 100
+network 192.168.3.0
+network 11.0.0.0
+
